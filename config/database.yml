@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: scan_barcode_development
+  host: localhost
+  port: 5432
+  username: root
+  password: 123456
+
+test:
+  <<: *default
+  database: scan_barcode_test
+  host: localhost
+  port: 5432
+  username: root
+  password: 123456
+
+production:
+  <<: *default
+  database: scan_barcode_production
+  username: scan_barcode
+  password: <%= ENV['SCAN_BARCODE_DATABASE_PASSWORD'] %>
