@@ -17,9 +17,9 @@ var bDbrWasmLoadSuccess = false;
 dynamsoft.dbrEnv.onAutoLoadWasmSuccess = function(){
   bDbrWasmLoadSuccess = true;
   if(preSelBarcodeFormat){
-    initTestRuntimeSettings().then(()=>{
+    initTestRuntimeSettings().then(function() {
       self.isLooping = true;
-    playvideo().then(loopReadVideo, ex=>{
+    playvideo().then(loopReadVideo, function(ex) {
       alert("Please make sure the camera is connected and the site is deployed in https: "+(ex.message || ex));
   });
   });
@@ -55,9 +55,9 @@ $('#btn-processSupportAndSettings').click(function(){
     preSelBarcodeFormat = preSelBarcodeFormat | this.value;
   });
   if(bDbrWasmLoadSuccess){
-    initTestRuntimeSettings().then(()=>{
+    initTestRuntimeSettings().then(function() {
       self.isLooping = true;
-    playvideo().then(loopReadVideo, ex=>{
+    playvideo().then(loopReadVideo, function(ex) {
       alert("Please make sure the camera is connected and the site is deployed in https: "+(ex.message || ex));
   });
   });
@@ -67,8 +67,8 @@ $('#btn-processSupportAndSettings').click(function(){
 var $ulVideoList = $('#ul-videoList');
 var ulVideoList = $ulVideoList[0];
 var updateDevice = function(){
-  return new Promise(resolve=>{
-      navigator.mediaDevices.enumerateDevices().then(deviceInfos=>{
+  return new Promise(function(resolve) {
+      navigator.mediaDevices.enumerateDevices().then(function(deviceInfos) {
       var $oldSelLi = $ulVideoList.children('.selectedLi');
   var oldVal = $oldSelLi.length ? $oldSelLi[0].dataVal : undefined ;
   ulVideoList.innerHTML = "";
@@ -92,7 +92,7 @@ var updateDevice = function(){
   var liArr = $ulVideoList.children();
   if(!selLi && liArr.length){
     try{
-      $('#video-back')[0].srcObject.getTracks().forEach((track)=>{
+      $('#video-back')[0].srcObject.getTracks().forEach(function(track) {
         if('video' == track.kind){
         liArr.each(function(){
           if(track.label == this.innerText){
@@ -117,14 +117,14 @@ var updateDevice = function(){
 $ulVideoList.on('click','.li-videoSource', function(){
   $ulVideoList.children('.selectedLi').removeClass('selectedLi');
   $(this).addClass('selectedLi');
-  playvideo(this.dataVal).catch(ex=>{
+  playvideo(this.dataVal).catch(function(ex) {
     alert(ex.message || ex);
 });
 });
 $('#ul-resolutionList').on('click','.li-resolution', function(){
   $('#ul-resolutionList .selectedLi').removeClass('selectedLi');
   $(this).addClass('selectedLi');
-  playvideo().catch(ex=>{
+  playvideo().catch(function(ex) {
     alert(ex.message || ex);
 });
 });
@@ -209,7 +209,7 @@ $('#ul-advance input').change(function(){
   }else{
     settings[field] = ipt.value;
   }
-  testRuntimeSettingsReader.updateRuntimeSettings(settings).catch(ex=>{
+  testRuntimeSettingsReader.updateRuntimeSettings(settings).catch(function(ex) {
     ipt.value = oldVal;
   alert(ex.message || ex);
 });
@@ -220,7 +220,7 @@ $('#a-clearCache').click(function(){
   $(this).addClass('disableOnWasmLoading');
   try{
     var request = window.indexedDB.deleteDatabase('dynamsoft');
-    request.onsuccess = request.onerror = ()=>{
+    request.onsuccess = request.onerror = function() {
       if(request.error){
         alert('Clear failed: '+(request.error.message || request.error));
       }else{
@@ -259,8 +259,8 @@ var needFixEdge = false;
     }
   }
 })();
-var playvideo = (deviceId)=>{
-  return new Promise((resolve,reject)=>{
+var playvideo = function(deviceId) {
+  return new Promise(function(resolve,reject) {
       var video = $('#video-back')[0];
 
   if (video.srcObject) {
@@ -302,16 +302,16 @@ var playvideo = (deviceId)=>{
   }
 
   var hasTryedNoWidthHeight = false;
-  var getAndPlayVideo = ()=>{
+  var getAndPlayVideo = function() {
     if(self.kConsoleLog)self.kConsoleLog('======try getUserMedia========');
     if(self.kConsoleLog)self.kConsoleLog('ask '+JSON.stringify(constraints.video.width)+'x'+JSON.stringify(constraints.video.height));
-    navigator.mediaDevices.getUserMedia(constraints).then((stream)=>{
+    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
       if(self.kConsoleLog)self.kConsoleLog('======get video========');
-    return new Promise((resolve2, reject2)=>{
+    return new Promise(function(resolve2, reject2) {
       video.srcObject = stream;
-    video.onloadedmetadata = ()=>{
+    video.onloadedmetadata = function() {
       if(self.kConsoleLog)self.kConsoleLog('======play video========');
-      video.play().then(()=>{
+      video.play().then(function() {
         if(self.kConsoleLog)self.kConsoleLog('======played video========');
       if(self.kConsoleLog)self.kConsoleLog('get '+video.videoWidth+'x'+video.videoHeight);
       if(needFixEdge){
@@ -325,15 +325,15 @@ var playvideo = (deviceId)=>{
         }
       }
       resolve2();
-    },(ex)=>{
+    },function(ex) {
         reject2(ex);
       });
     };
-    video.onerror = ()=>{reject2();};
+    video.onerror = function() {reject2();};
   });
-  }).then(()=>{
+  }).then(function() {
       resolve();
-  }).catch((ex)=>{
+  }).catch(function(ex) {
       if(self.kConsoleLog)self.kConsoleLog(ex);
     if(!hasTryedNoWidthHeight){
       hasTryedNoWidthHeight = true;
@@ -387,13 +387,13 @@ var loopReadVideo = function(){
 
   var timestart = null;
   var barcodeReader = new dynamsoft.BarcodeReader();
-  barcodeReader.updateRuntimeSettings(testRuntimeSettingsReader.getRuntimeSettings()).then(()=>{
+  barcodeReader.updateRuntimeSettings(testRuntimeSettingsReader.getRuntimeSettings()).then(function() {
     timestart = (new Date()).getTime();
   return barcodeReader.decodeVideo(video,sx,sy,sWidth,sHeight,dWidth,dHeight);
-}).then((results)=>{
+}).then(function(results) {
     if(self.kConsoleLog)self.kConsoleLog('time cost: ' + ((new Date()).getTime() - timestart) + 'ms');
   var bestConfidence = 0, bestTxt = undefined, txtArr = [];
-  for(let i=0;i<results.length;++i){
+  for(var i=0;i<results.length;++i){
     var result = results[i];
     if(self.kConsoleLog)self.kConsoleLog(result.BarcodeText);
     var confidence = result.LocalizationResult.ExtendedResultArray[0].Confidence;
@@ -408,7 +408,7 @@ var loopReadVideo = function(){
 
   //add to top log
   var $divTopLog = $('#div-topLog');
-  for(let i = 0; i < txtArr.length; ++i){
+  for(var i = 0; i < txtArr.length; ++i){
     var pTopLog = document.createElement("p");
     pTopLog.style.display = 'none';
     pTopLog.innerText = txtArr[i];
@@ -446,7 +446,7 @@ var loopReadVideo = function(){
   if (results.length) ringBell();
   barcodeReader.deleteInstance();
   setTimeout(loopReadVideo, readInterval);
-}).catch(ex=>{
+}).catch(function(ex) {
     barcodeReader.deleteInstance();
   if(self.kConsoleLog)self.kConsoleLog(ex);
   setTimeout(loopReadVideo, readInterval);
@@ -456,10 +456,10 @@ var loopReadVideo = function(){
 
 $('#btn-settings').click(function(){
   isLooping = false;
-  updateDevice().then(()=>{
+  updateDevice().then(function() {
     $('#frame-menu').animate(
     {width:"show",paddingLeft:"show",paddingRight:"show",marginLeft:"show",marginRight:"show"},
-    {complete:()=>{Foundation.reInit($('#ul-menu'));}}
+    {complete: function() {Foundation.reInit($('#ul-menu'));}}
   );
 });
 });
@@ -467,7 +467,7 @@ $('#div-menuRightMargin').click(function(){
   isLooping = true;
   $('#frame-menu').animate(
     {width:"hide",paddingLeft:"hide",paddingRight:"hide",marginLeft:"hide",marginRight:"hide"},
-    {complete:()=>{loopReadVideo();}}
+    {complete:function() {loopReadVideo();}}
   );
 });
 $('#ipt-file').change(function(){
@@ -476,11 +476,11 @@ $('#ipt-file').change(function(){
   video.pause();
   isLooping = false;
   var barcodeReader = new dynamsoft.BarcodeReader();
-  barcodeReader.updateRuntimeSettings(testRuntimeSettingsReader.getRuntimeSettings()).then(()=>{
+  barcodeReader.updateRuntimeSettings(testRuntimeSettingsReader.getRuntimeSettings()).then(function() {
     var i = -1;
   var files = this.files;
   var message = [];
-  var readOne = ()=>{
+  var readOne = function() {
     if(++i == files.length){
       barcodeReader.deleteInstance();
       alert(message.join('\n'));
@@ -495,12 +495,12 @@ $('#ipt-file').change(function(){
     var file = files[i];
     if(message.length){message.push('\n');}
     message.push(file.name+':');
-    barcodeReader.decodeFileInMemory(file).then(results=>{
-      for(let j=0;j<results.length;++j){
+    barcodeReader.decodeFileInMemory(file).then(function(results) {
+      for(var j=0;j<results.length;++j){
       message.push(results[j].BarcodeText);
     }
     readOne();
-  }).catch(ex=>{
+  }).catch(function(ex) {
       message.push("Error: "+(ex.message || ex));
     readOne();
   });
