@@ -479,8 +479,6 @@ var loopReadVideo = function() {
       }
     }
 
-    if (results.length) ringBell();
-
     barcodeReader.deleteInstance();
     setTimeout(loopReadVideo, readInterval);
   }).catch(function(ex) {
