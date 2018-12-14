@@ -75,7 +75,7 @@ $('#btn-processSupportAndSettings').click(function() {
 
 var $ulVideoList = $('#ul-videoList');
 var ulVideoList = $ulVideoList[0];
-var updateDevice = function(){
+var updateDevice = function() {
   return new Promise(function(resolve) {
     navigator.mediaDevices.enumerateDevices().then(function(deviceInfos) {
       var $oldSelLi = $ulVideoList.children('.selectedLi');
@@ -116,7 +116,7 @@ var updateDevice = function(){
             }
           });
         } catch(ex) {
-          if(self.kConsoleLog){self.kConsoleLog(ex);}
+
         }
       }
 
@@ -297,13 +297,11 @@ var playvideo = function(deviceId) {
     var video = $('#video-back')[0];
 
     if (video.srcObject) {
-      if(self.kConsoleLog)self.kConsoleLog('======stop video========');
       video.srcObject.getTracks().forEach(function(track) {
         track.stop();
       });
     }
 
-    if(self.kConsoleLog)self.kConsoleLog('======before video========');
     var selW = $('#ul-resolutionList .selectedLi').attr('data-width');
     var selH = $('#ul-resolutionList .selectedLi').attr('data-height');
     var constraints = {
@@ -339,21 +337,11 @@ var playvideo = function(deviceId) {
 
     var hasTryedNoWidthHeight = false;
     var getAndPlayVideo = function() {
-      if(self.kConsoleLog)self.kConsoleLog('======try getUserMedia========');
-      if(self.kConsoleLog)self.kConsoleLog('ask '+ JSON.stringify(constraints.video.width) + 'x' + JSON.stringify(constraints.video.height));
-
       navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-        if(self.kConsoleLog)self.kConsoleLog('======get video========');
-
         return new Promise(function(resolve2, reject2) {
           video.srcObject = stream;
           video.onloadedmetadata = function() {
-            if(self.kConsoleLog)self.kConsoleLog('======play video========');
-
             video.play().then(function() {
-              if(self.kConsoleLog)self.kConsoleLog('======played video========');
-              if(self.kConsoleLog)self.kConsoleLog('get '+video.videoWidth+'x'+video.videoHeight);
-
               if(needFixEdge) {
                 var dw = $(document).width(), dh = $(document).height();
 
@@ -377,8 +365,6 @@ var playvideo = function(deviceId) {
       }).then(function() {
         resolve();
       }).catch(function(ex) {
-        if(self.kConsoleLog)self.kConsoleLog(ex);
-
         if(!hasTryedNoWidthHeight) {
           hasTryedNoWidthHeight = true;
           constraints.video.width = undefined;
@@ -401,11 +387,9 @@ var loopReadVideo = function() {
 
   var video = $('#video-back')[0];
   if(video.paused) {
-    if(self.kConsoleLog)self.kConsoleLog('Video is paused. Ask in 1s.');
     return setTimeout(loopReadVideo, 1000);
   }
 
-  if(self.kConsoleLog)self.kConsoleLog('======= once read =======');
   var videoRealW = video.videoWidth;
   var videoRealH = video.videoHeight;
   var sx, sy, sWidth, sHeight, dWidth, dHeight;
@@ -438,12 +422,9 @@ var loopReadVideo = function() {
     timestart = (new Date()).getTime();
     return barcodeReader.decodeVideo(video,sx,sy,sWidth,sHeight,dWidth,dHeight);
   }).then(function(results) {
-    if(self.kConsoleLog)self.kConsoleLog('time cost: ' + ((new Date()).getTime() - timestart) + 'ms');
-
     var bestConfidence = 0, bestTxt = undefined, txtArr = [];
     for(var i=0;i<results.length;++i) {
       var result = results[i];
-      if(self.kConsoleLog)self.kConsoleLog(result.BarcodeText);
       var confidence = result.LocalizationResult.ExtendedResultArray[0].Confidence;
 
       if(confidence > 30) {
@@ -504,8 +485,6 @@ var loopReadVideo = function() {
     setTimeout(loopReadVideo, readInterval);
   }).catch(function(ex) {
     barcodeReader.deleteInstance();
-
-    if(self.kConsoleLog)self.kConsoleLog(ex);
     setTimeout(loopReadVideo, readInterval);
     throw ex;
   });
@@ -551,8 +530,6 @@ $('#div-menuRightMargin').click(function() {
 });
 
 $('#ipt-file').change(function() {
-  if(self.kConsoleLog)self.kConsoleLog('Static image detected, pause loopReadVideo.');
-
   var video = $('#video-back')[0];
   video.pause();
   isLooping = false;
@@ -566,7 +543,6 @@ $('#ipt-file').change(function() {
       if(++i == files.length) {
         barcodeReader.deleteInstance();
         alert(message.join('\n'));
-        if(self.kConsoleLog)self.kConsoleLog('Finish, continue loopReadVideo.');
         video.play();
         isLooping = true;
         loopReadVideo();
