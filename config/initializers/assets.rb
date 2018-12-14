@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join("vendor")
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(dbr/foundation.min.css dbr/dbr.css)
 Rails.application.config.assets.precompile += %w(dbr/what-input.min.js dbr/foundation.min.js
-  dbr/kConsole.js dbr/dbr-6.4.1.1.min.js dbr/webrtc-adapter.js dbr/ringBell.js)
+  dbr/kConsole.js dbr/dbr-6.4.1.1.min.js dbr/webrtc-adapter.js dbr/ringBell.js dbr/dbr.js)
