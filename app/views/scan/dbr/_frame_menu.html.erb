@@ -1,117 +1,117 @@
 <div id="frame-menu" class="frame-menu" style="display:none;">
   <div class="div-leftMenu">
     <ul id="ul-menu" class="vertical menu drilldown" data-drilldown data-auto-height="true" data-animate-height="true">
-      <li>
-        <a>video source</a>
+      <!--<li>-->
+        <!--<a>video source</a>-->
 
-        <ul id="ul-videoList" class="ul-videoList menu vertical">
-          <li><a>looking up camera...</a></li>
-        </ul>
-      </li>
+        <!--<ul id="ul-videoList" class="ul-videoList menu vertical">-->
+          <!--<li><a>looking up camera...</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
-      <li>
-        <a>video resolution</a>
+      <!--<li>-->
+        <!--<a>video resolution</a>-->
 
-        <ul id="ul-resolutionList" class="menu vertical">
-          <li class='li-resolution' data-width='3840' data-height='2160'><a>3840 x 2160</a></li>
-          <li class='li-resolution' data-width='1920' data-height='1080'><a>1920 x 1080</a></li>
-          <li class='li-resolution' data-width='1600' data-height='1200'><a>1600 x 1200</a></li>
-          <li class='li-resolution selectedLi' data-width='1280' data-height='720'><a>1280 x 720</a></li>
-          <li class='li-resolution' data-width='800' data-height='600'><a>800 x 600</a></li>
-          <li class='li-resolution' data-width='640' data-height='480'><a>640 x 480</a></li>
-          <li class='li-resolution' data-width='640' data-height='360'><a>640 x 360</a></li>
-        </ul>
-      </li>
+        <!--<ul id="ul-resolutionList" class="menu vertical">-->
+          <!--<li class='li-resolution' data-width='3840' data-height='2160'><a>3840 x 2160</a></li>-->
+          <!--<li class='li-resolution' data-width='1920' data-height='1080'><a>1920 x 1080</a></li>-->
+          <!--<li class='li-resolution' data-width='1600' data-height='1200'><a>1600 x 1200</a></li>-->
+          <!--<li class='li-resolution selectedLi' data-width='1280' data-height='720'><a>1280 x 720</a></li>-->
+          <!--<li class='li-resolution' data-width='800' data-height='600'><a>800 x 600</a></li>-->
+          <!--<li class='li-resolution' data-width='640' data-height='480'><a>640 x 480</a></li>-->
+          <!--<li class='li-resolution' data-width='640' data-height='360'><a>640 x 360</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
-      <li>
-        <a class="a-readFullRegion">read full region
+      <!--<li>-->
+        <!--<a class="a-readFullRegion">read full region-->
 
-          <div class="switch tiny">
-            <input id="cb-readFullRegion" class="cb-readFullRegion switch-input" type="checkbox" name="exampleSwitch" autocomplete="off">
-            <label id="lb-readFullRegion" class="switch-paddle" for="cb-readFullRegion"></label>
-          </div>
-        </a>
-      </li>
+          <!--<div class="switch tiny">-->
+            <!--<input id="cb-readFullRegion" class="cb-readFullRegion switch-input" type="checkbox" name="exampleSwitch" autocomplete="off">-->
+            <!--<label id="lb-readFullRegion" class="switch-paddle" for="cb-readFullRegion"></label>-->
+          <!--</div>-->
+        <!--</a>-->
+      <!--</li>-->
 
-      <li>
-        <a>reading interval</a>
+      <!--<li>-->
+        <!--<a>reading interval</a>-->
 
-        <ul id="ul-interval" class="menu vertical">
-          <li class='li-interval' data-val='2000'><a>2s</a></li>
-          <li class='li-interval' data-val='1000'><a>1s</a></li>
-          <li class='li-interval' data-val='500'><a>0.5s</a></li>
-          <li class='li-interval' data-val='200'><a>0.2s</a></li>
-          <li class='li-interval' data-val='100'><a>0.1s</a></li>
-          <li class='li-interval selectedLi' data-val='50'><a>50ms</a></li>
-          <li class='li-interval' data-val='25'><a>25ms</a></li>
-          <li class='li-interval' data-val='10'><a>10ms</a></li>
-        </ul>
-      </li>
+        <!--<ul id="ul-interval" class="menu vertical">-->
+          <!--<li class='li-interval' data-val='2000'><a>2s</a></li>-->
+          <!--<li class='li-interval' data-val='1000'><a>1s</a></li>-->
+          <!--<li class='li-interval' data-val='500'><a>0.5s</a></li>-->
+          <!--<li class='li-interval' data-val='200'><a>0.2s</a></li>-->
+          <!--<li class='li-interval' data-val='100'><a>0.1s</a></li>-->
+          <!--<li class='li-interval selectedLi' data-val='50'><a>50ms</a></li>-->
+          <!--<li class='li-interval' data-val='25'><a>25ms</a></li>-->
+          <!--<li class='li-interval' data-val='10'><a>10ms</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
-      <li class="disableOnWasmLoading">
-        <a id="a-barcodeFormat">barcode formats</a>
+      <!--<li class="disableOnWasmLoading">-->
+        <!--<a id="a-barcodeFormat">barcode formats</a>-->
 
-        <ul id='ul-barcodeFormatId' class="menu vertical">
-          <li class='li-barcodeFormatId' data-val='0x3ff'><a>1D</a></li>
-          <li class='li-barcodeFormatId' data-val='0x2000000'><a>PDF 417</a></li>
-          <li class='li-barcodeFormatId' data-val='0x4000000'><a>QR Code</a></li>
-          <li class='li-barcodeFormatId' data-val='0x8000000'><a>DataMatrix</a></li>
-          <li class='li-barcodeFormatId' data-val='0x10000000'><a>Aztec</a></li>
-        </ul>
-      </li>
+        <!--<ul id='ul-barcodeFormatId' class="menu vertical">-->
+          <!--<li class='li-barcodeFormatId' data-val='0x3ff'><a>1D</a></li>-->
+          <!--<li class='li-barcodeFormatId' data-val='0x2000000'><a>PDF 417</a></li>-->
+          <!--<li class='li-barcodeFormatId' data-val='0x4000000'><a>QR Code</a></li>-->
+          <!--<li class='li-barcodeFormatId' data-val='0x8000000'><a>DataMatrix</a></li>-->
+          <!--<li class='li-barcodeFormatId' data-val='0x10000000'><a>Aztec</a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
-      <li class="disableOnWasmLoading">
-        <a id='a-advance'>advanced</a>
+      <!--<li class="disableOnWasmLoading">-->
+        <!--<a id='a-advance'>advanced</a>-->
 
-        <ul id="ul-advance" class="ul-advance menu vertical">
-          <li><a><label>AntiDamageLevel<input></label></a></li>
-          <li><a><label>BarcodeInvertMode<input></label></a></li>
-          <li><a><label>BinarizationBlockSize<input></label></a></li>
-          <li><a><label>ColourImageConvertMode<input></label></a></li>
-          <li><a><label>DeblurLevel<input></label></a></li>
-          <li><a><label>EnableFillBinaryVacancy<input></label></a></li>
-          <li><a><label>ExpectedBarcodesCount<input></label></a></li>
-          <li><a><label>GrayEqualizationSensitivity<input></label></a></li>
-          <li><a><label>LocalizationAlgorithmPriority<input></label></a></li>
-          <li><a><label>MaxAlgorithmThreadCount<input></label></a></li>
-          <li><a><label>MaxBarcodesCount<input></label></a></li>
-          <li><a><label>MaxImageDimensionToLocalizeBarcodesOnFullImage<input></label></a></li>
-          <li><a><label>PDFRasterDPI<input></label></a></li>
-          <li><a><label>RegionPredetectionMode<input></label></a></li>
-          <li><a><label>Reserved<input></label></a></li>
-          <li><a><label>ScaleDownThreshold<input></label></a></li>
-          <li><a><label>TextFilterMode<input></label></a></li>
-          <li><a><label>TextureDetectionSensitivity<input></label></a></li>
-          <li><a><label>Timeout<input></label></a></li>
-        </ul>
-      </li>
+        <!--<ul id="ul-advance" class="ul-advance menu vertical">-->
+          <!--<li><a><label>AntiDamageLevel<input></label></a></li>-->
+          <!--<li><a><label>BarcodeInvertMode<input></label></a></li>-->
+          <!--<li><a><label>BinarizationBlockSize<input></label></a></li>-->
+          <!--<li><a><label>ColourImageConvertMode<input></label></a></li>-->
+          <!--<li><a><label>DeblurLevel<input></label></a></li>-->
+          <!--<li><a><label>EnableFillBinaryVacancy<input></label></a></li>-->
+          <!--<li><a><label>ExpectedBarcodesCount<input></label></a></li>-->
+          <!--<li><a><label>GrayEqualizationSensitivity<input></label></a></li>-->
+          <!--<li><a><label>LocalizationAlgorithmPriority<input></label></a></li>-->
+          <!--<li><a><label>MaxAlgorithmThreadCount<input></label></a></li>-->
+          <!--<li><a><label>MaxBarcodesCount<input></label></a></li>-->
+          <!--<li><a><label>MaxImageDimensionToLocalizeBarcodesOnFullImage<input></label></a></li>-->
+          <!--<li><a><label>PDFRasterDPI<input></label></a></li>-->
+          <!--<li><a><label>RegionPredetectionMode<input></label></a></li>-->
+          <!--<li><a><label>Reserved<input></label></a></li>-->
+          <!--<li><a><label>ScaleDownThreshold<input></label></a></li>-->
+          <!--<li><a><label>TextFilterMode<input></label></a></li>-->
+          <!--<li><a><label>TextureDetectionSensitivity<input></label></a></li>-->
+          <!--<li><a><label>Timeout<input></label></a></li>-->
+        <!--</ul>-->
+      <!--</li>-->
 
-      <li>
-        <a id="a-clearCache">clear cache</a>
-      </li>
+      <!--<li>-->
+        <!--<a id="a-clearCache">clear cache</a>-->
+      <!--</li>-->
 
-      <li>
-        <a>About Dynamsoft</a>
+      <!--<li>-->
+        <!--<a>About Dynamsoft</a>-->
 
-        <ul class="menu vertical">
-          <li>
-            <a class="a-aboutDynamsoftContent">
-              Founded in Sep 2003 with the aim of being the dynamic center of software developers,
-              Dynamsoft provides enterprise-class version control software,
-              TWAIN software development kits (SDK) and other document imaging SDKs,
-              with numerous generations for each product.
-              Today many Fortune 500 Companies including HP, IBM, Intel,
-              and Siemens trust Dynamsoft solutions for version control and TWAIN scanning SDK development.
-            </a>
-          </li>
+        <!--<ul class="menu vertical">-->
+          <!--<li>-->
+            <!--<a class="a-aboutDynamsoftContent">-->
+              <!--Founded in Sep 2003 with the aim of being the dynamic center of software developers,-->
+              <!--Dynamsoft provides enterprise-class version control software,-->
+              <!--TWAIN software development kits (SDK) and other document imaging SDKs,-->
+              <!--with numerous generations for each product.-->
+              <!--Today many Fortune 500 Companies including HP, IBM, Intel,-->
+              <!--and Siemens trust Dynamsoft solutions for version control and TWAIN scanning SDK development.-->
+            <!--</a>-->
+          <!--</li>-->
 
-          <li>
-            <a href="https://www.dynamsoft.com/Company/Contact.aspx" target="_blank">Contact Us</a>
-          </li>
-        </ul>
-      </li>
+          <!--<li>-->
+            <!--<a href="https://www.dynamsoft.com/Company/Contact.aspx" target="_blank">Contact Us</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</li>-->
     </ul>
   </div>
 
-  <div id="div-menuRightMargin" class="div-menuRightMargin"></div>
+  <!--<div id="div-menuRightMargin" class="div-menuRightMargin"></div>-->
 </div>

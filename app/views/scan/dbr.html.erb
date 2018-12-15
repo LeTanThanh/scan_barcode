@@ -1,22 +1,18 @@
-<%= render "scan/dbr/video" %>
-
-<%= render "scan/dbr/frame_main" %>
-
-<%= render "scan/dbr/frame_menu" %>
-
-<div id="frame-loadingAnimation" class="cm-spinner"></div>
-
-<div id="frame-supportAndSetting" class="frame-supportAndSetting">
-  <p>Dynamsoft Barcode Reader JavaScript Edition is a JavaScript API for barcode scanning based on the WebAssembly technology. This demo supports scanning bar codes directly from a live video stream.</p>
-
-  <%= render "scan/dbr/support_browser" %>
-
-  <h3>Barcode Format</h3>
-
-  <%= render "scan/dbr/barcode_format" %>
+<div class="frame-video">
+  <video id="video-back" class="video-back" playsinline="true"></video>
 </div>
 
-<div id="frame-white" class="frame-white"></div>
+<div id="frame-main" class="frame-main useRegion">
+  <div class="div-snapshotOuter">
+    <div class="div-scanLight"></div>
+  </div>
+
+  <div class="div-bottom">
+    <div id="div-highLightResult" class="div-highLightResult">
+      <span>loading...</span>
+    </div>
+  </div>
+</div>
 
 <%= stylesheet_link_tag "dbr/foundation.min" %>
 <%= stylesheet_link_tag "dbr/dbr" %>
