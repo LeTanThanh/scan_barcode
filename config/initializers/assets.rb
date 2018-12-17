@@ -13,6 +13,7 @@ Rails.application.config.assets.paths << Rails.root.join("vendor")
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.application.config.assets.precompile += %w(dbr/dbr.css)
+Rails.application.config.assets.precompile += %w(dbr/dbr.css webondevices/webondevices.css)
 Rails.application.config.assets.precompile += %w(dbr/what-input.min.js dbr/kConsole.js
-  dbr/dbr-6.4.1.1.min.js dbr/webrtc-adapter.js dbr/ringBell.js dbr/dbr.js)
+  dbr/dbr-6.4.1.1.min.js dbr/webrtc-adapter.js dbr/ringBell.js dbr/dbr.js
+  webondevices/webondevices.min.js)

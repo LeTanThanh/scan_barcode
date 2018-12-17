@@ -4,4 +4,7 @@ class ScanController < ApplicationController
 
   def dbr
   end
+
+  def webondevices
+  end
 end
