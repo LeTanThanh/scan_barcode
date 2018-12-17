@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "scan#index"
 
-  get "/dbr", to: "scan#dbr", as: :dbr
+  get "/dynamsoft", to: "scan#dynamsoft", as: :dynamsoft
   get "/webondevices", to: "scan#webondevices", as: :webondevices
 end
