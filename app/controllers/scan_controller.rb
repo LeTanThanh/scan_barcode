@@ -2,7 +2,7 @@ class ScanController < ApplicationController
   def index
   end
 
-  def dbr
+  def dynamsoft
   end
 
   def webondevices
